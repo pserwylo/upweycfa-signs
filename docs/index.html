@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Upwey CFA Signs</title>
+</head>
+<body>
+</body>
+<script>
+    (function() {
+        const list = document.getElementById('file-list');
+
+        const now = new Date();
+
+        const started = new Date()
+        started.setTime(now.getTime() - 1000);
+        const startedUrl = `./jumble-sale-countdown.html?date=${started.toISOString()}`;
+
+        const tenSeconds = new Date()
+        tenSeconds.setTime(now.getTime() + 1000 * 10);
+        const tenSecondsUrl = `./jumble-sale-countdown.html?date=${tenSeconds.toISOString()}`;
+
+        const oneMinute = new Date()
+        oneMinute.setTime(now.getTime() + 1000 * 60);
+        const oneMinuteUrl = `./jumble-sale-countdown.html?date=${oneMinute.toISOString()}`;
+
+        const tenMinutes = new Date()
+        tenMinutes.setTime(now.getTime() + 1000 * 60 * 10);
+        const tenMinutesUrl = `./jumble-sale-countdown.html?date=${tenMinutes.toISOString()}`;
+
+        const oneHour = new Date()
+        oneHour.setTime(now.getTime() + 1000 * 60 * 60);
+        const oneHourUrl = `./jumble-sale-countdown.html?date=${oneHour.toISOString()}`;
+
+        const twoHours = new Date()
+        twoHours.setTime(now.getTime() + 1000 * 60 * 60 * 2);
+        const twoHoursUrl = `./jumble-sale-countdown.html?date=${twoHours.toISOString()}`;
+
+        const oneDay = new Date()
+        oneDay.setTime(now.getTime() + 1000 * 60 * 60 * 24);
+        const oneDayUrl = `./jumble-sale-countdown.html?date=${oneDay.toISOString()}`;
+
+        const twoDays = new Date()
+        twoDays.setTime(now.getTime() + 1000 * 60 * 60 * 24 * 2);
+        const twoDaysUrl = `./jumble-sale-countdown.html?date=${twoDays.toISOString()}`;
+
+        const node = document.createElement('div');
+        node.innerHTML = innerHTML = `
+            <ul>
+                <li><a href="${startedUrl}">Started</a></li>
+                <li><a href="${tenSecondsUrl}">Ten Seconds</a></li>
+                <li><a href="${oneMinuteUrl}">One Minute</a></li>
+                <li><a href="${tenMinutesUrl}">Ten Minutes</a></li>
+                <li><a href="${oneHourUrl}">One Hour</a></li>
+                <li><a href="${twoHoursUrl}">Two Hours</a></li>
+                <li><a href="${oneDayUrl}">One Day</a></li>
+                <li><a href="${twoDaysUrl}">Two Days</a></li>
+            </ul>
+
+            <h3>Started</h3>
+            <iframe style="width: 640px; height: 240px" src="${startedUrl}"></iframe>
+
+            <h3>Ten Seconds</h3>
+            <iframe style="width: 640px; height: 240px" src="${tenSecondsUrl}"></iframe>
+
+            <h3>One Minute</h3>
+            <iframe style="width: 640px; height: 240px" src="${oneMinuteUrl}"></iframe>
+
+            <h3>Ten Minutes</h3>
+            <iframe style="width: 640px; height: 240px" src="${tenMinutesUrl}"></iframe>
+
+            <h3>One Hour</h3>
+            <iframe style="width: 640px; height: 240px" src="${oneHourUrl}"></iframe>
+
+            <h3>Two Hours</h3>
+            <iframe style="width: 640px; height: 240px" src="${twoHoursUrl}"></iframe>
+
+            <h3>One Day</h3>
+            <iframe style="width: 640px; height: 240px" src="${oneDayUrl}"></iframe>
+
+            <h3>Two Days</h3>
+            <iframe style="width: 640px; height: 240px" src="${twoDaysUrl}"></iframe>
+        `;
+
+        document.querySelector('body').appendChild(node);
+    })();
+</script>
+</html>

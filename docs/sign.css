@@ -1,0 +1,15 @@
+body {
+    margin: 0;
+    background-color: black;
+    color: white;
+}
+
+.sign {
+    width: 638px;
+    height: 238px;
+    overflow: hidden;
+
+    font-family: "Slackey", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
