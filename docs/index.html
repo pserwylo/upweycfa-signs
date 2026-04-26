@@ -4,8 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Upwey CFA Signs</title>
+    <style>
+        iframe {
+            zoom: 0.5;
+        }
+
+        h1, h2, h3 {
+            margin: 0.5em 0 0 0;
+        }
+
+        p {
+            margin: 0;
+        }
+    </style>
 </head>
 <body>
+    <h2>Videos for throughout day</h2>
+    <div id="videos">
+        <video src="./videos/thank-you.mp4" controls width="320"></video>
+        <video src="./videos/technology.mp4" controls width="320"></video>
+        <video src="./videos/firewood.mp4" controls width="320"></video>
+        <video src="./videos/delivery.mp4" controls width="320"></video>
+    </div>
+
+    <h2>Countdown to Jumble Sale</h2>
+    <p>For days leading up to the sale, and the final seconds before the rope lifts.</p>
+    <div id="countdown"></div>
 </body>
 <script>
     (function() {
@@ -21,12 +45,12 @@
         tenSeconds.setTime(now.getTime() + 1000 * 10);
         const tenSecondsUrl = `./jumble-sale-countdown.html?date=${tenSeconds.toISOString()}`;
 
-        const oneMinute = new Date()
-        oneMinute.setTime(now.getTime() + 1000 * 60);
-        const oneMinuteUrl = `./jumble-sale-countdown.html?date=${oneMinute.toISOString()}`;
+        const twentySeconds = new Date()
+        twentySeconds.setTime(now.getTime() + 1000 * 20);
+        const twentySecondsUrl = `./jumble-sale-countdown.html?date=${twentySeconds.toISOString()}`;
 
         const tenMinutes = new Date()
-        tenMinutes.setTime(now.getTime() + 1000 * 60 * 10);
+        tenMinutes.setTime(now.getTime() + 1000 * 60 * 15);
         const tenMinutesUrl = `./jumble-sale-countdown.html?date=${tenMinutes.toISOString()}`;
 
         const oneHour = new Date()
@@ -47,37 +71,20 @@
 
         const node = document.createElement('div');
         node.innerHTML = innerHTML = `
-            <ul>
-                <li><a href="${startedUrl}">Started</a></li>
-                <li><a href="${tenSecondsUrl}">Ten Seconds</a></li>
-                <li><a href="${oneMinuteUrl}">One Minute</a></li>
-                <li><a href="${tenMinutesUrl}">Ten Minutes</a></li>
-                <li><a href="${oneHourUrl}">One Hour</a></li>
-                <li><a href="${twoHoursUrl}">Two Hours</a></li>
-                <li><a href="${oneDayUrl}">One Day</a></li>
-                <li><a href="${twoDaysUrl}">Two Days</a></li>
-            </ul>
-
             <h3>Started</h3>
-            <iframe style="width: 640px; height: 240px" src="${startedUrl}"></iframe>
+            <p>Shown after the 9am start time (i.e. when countdown completes)</p>
+            <iframe style="width: 640px; height: 240px" src="${startedUrl}" style="zoom: 0.5"></iframe>
 
-            <h3>Ten Seconds</h3>
-            <iframe style="width: 640px; height: 240px" src="${tenSecondsUrl}"></iframe>
+            <h3>Under a minute</h3>
+            <p>For a big countdown just before the rope lifts.</p>
+            <iframe style="width: 640px; height: 240px" src="${twentySecondsUrl}"></iframe>
 
-            <h3>One Minute</h3>
-            <iframe style="width: 640px; height: 240px" src="${oneMinuteUrl}"></iframe>
-
-            <h3>Ten Minutes</h3>
+            <h3>Under an hour</h3>
+            <p>Countdown doesn't need to be so big. Will use the right side to show what is for sale.</p>
             <iframe style="width: 640px; height: 240px" src="${tenMinutesUrl}"></iframe>
-
-            <h3>One Hour</h3>
-            <iframe style="width: 640px; height: 240px" src="${oneHourUrl}"></iframe>
 
             <h3>Two Hours</h3>
             <iframe style="width: 640px; height: 240px" src="${twoHoursUrl}"></iframe>
-
-            <h3>One Day</h3>
-            <iframe style="width: 640px; height: 240px" src="${oneDayUrl}"></iframe>
 
             <h3>Two Days</h3>
             <iframe style="width: 640px; height: 240px" src="${twoDaysUrl}"></iframe>

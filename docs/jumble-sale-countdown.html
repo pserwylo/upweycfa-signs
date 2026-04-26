@@ -16,6 +16,14 @@
         p {
             margin: 0;
         }
+
+        .items-list {
+            font-size: 1em;
+            text-align: left;
+            list-style: none;
+            margin: 0.5em 0 0 0;
+            padding: 0;
+        }
     </style>
 </head>
 <body class="sign">
@@ -115,8 +123,18 @@
                     <p style="font-size: 2em">Only</p>
                     <p style="font-size: 4em">${title}</p>
                     <p style="font-size: 2em">Until the Jumble Sale!</p>
-                    <div slot="right">
-                        <h1 style="font-size: 6em;">⏰</h1>
+                    <div slot="right" style="color: black; font-family: Arial, Helvetica, sans-serif;">
+                        <h1 style="font-size: 1.2em; margin: 0">Sat May 2nd<br />9am - 2pm</h1>
+                        <ul class="items-list"">
+                            <li>🪑 Furniture</li>
+                            <li>🛠 Tools</li>
+                            <li>⛺ Outdoor</li>
+                            <li>🍴 Kitchenware</li>
+                            <li>📻 Technology</li>
+                            <li>📚 Books</li>
+                            <li>🌭 Food</li>
+                            <li>and more!!!</li>
+                        </ul>
                     </div>
                 </cfa-banner>
             `
@@ -126,16 +144,6 @@
             const title = days === 1 ? "1 Day" : `${days} Days`
 
             sign.innerHTML = `
-                <style>
-                    .items-list {
-                        font-size: 1em;
-                        text-align: left;
-                        list-style: none;
-                        margin: 0;
-                        padding: 0;
-                        margin-top: 0.5em;
-                    }
-                </style>
                 <cfa-banner>
                     <p style="font-size: 2em">Only</p>
                     <p style="font-size: 4em">${title}</p>
