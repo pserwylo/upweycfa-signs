@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Slackey&family=Special+Elite&display=swap" rel="stylesheet">
+    <script src="https://moment.github.io/luxon/global/luxon.min.js"></script>
 
     <style>
         h1 {
@@ -42,10 +43,6 @@
             if (date == null) {
                 sign.innerText = "Specify a ?date=YYYY-MM-DD HH:mm:ss param";
                 return;
-            }
-
-            if (debug) {
-                console.log(date.diff);
             }
 
             if (date.diff.seconds <= 0) {

@@ -6,20 +6,38 @@ function dateParam() {
         return null;
     }
 
+    let now = new Date();
+    if (params.has('now')) {
+        try {
+            now = new Date(params.get('now'));
+        } catch (e) {
+            console.error("incorrect format for now=YYYY-MM-DD HH:MM:SS query param, defaulting to new Date()")
+        }
+    }
+
     try {
         const targetDate = new Date(params.get('date'));
-        const now = new Date();
         const diffSeconds = Math.round((targetDate.getTime() - now.getTime()) / 1000);
+        let days = Math.round(diffSeconds / 60 / 60 / 24);
+
+        // In case I forget to include Luxon...
+        try {
+            const luxonNow = luxon.DateTime.fromJSDate(now);
+            const luxonTargetDate = luxon.DateTime.fromJSDate(targetDate);
+            days = luxonTargetDate.ordinal = luxonTargetDate.ordinal - luxonNow.ordinal;
+        } catch (e) {}
+
         const diff = {
             seconds: diffSeconds,
             minutes: Math.round(diffSeconds / 60),
             hours: Math.round(diffSeconds / 60 / 60),
-            days: Math.round(diffSeconds / 60 / 60 / 24),
+            days,
         }
 
         const debug = params.has('debug');
 
         return {
+            now,
             targetDate,
             diff,
             debug,
