@@ -32,6 +32,21 @@
             white-space: nowrap;
             display: inline-block;
         }
+
+        .shake {
+            /* Start the shake animation and make the animation last for 0.5 seconds */
+            animation: shake 0.1s;
+
+            /* When the animation is finished, start again */
+            animation-iteration-count: infinite;
+        }
+
+        /* https://www.w3schools.com/howto/howto_css_shake_image.asp */
+        @keyframes shake {
+            0% { transform: rotate(1deg); }
+            50% { transform: rotate(-1deg); }
+            100% { transform: rotate(1deg); }
+        }
     </style>
 </head>
 <body class="sign">
@@ -88,9 +103,21 @@
 
         function started(debug) {
             sign.innerHTML = `
+                <style>
+                    h1 {
+                        font-size: 3em;
+                    }
+
+                    .pre-heading {
+                        font-size: 2em;
+                    }
+                </style>
                 <cfa-banner>
+                    <div class="pre-heading">
+                        Welcome to
+                    </div>
                     <h1>
-                        Welcome to the<br />Jumble Sale!
+                        Jumble Sale!
                     </h1>
                     <div slot="right">
                         <h1 style="font-size: 8em;">🎉</h1>
@@ -102,11 +129,19 @@
         function underAMinute(seconds, debug) {
             const secs = seconds % 60;
             const secondsClock = secs < 10 ? `0${secs}` : secs;
+
+            // Don't actually expect anything other than the very first second where we show "01:00" for a moment before
+            // showing 00:59. But if we omit minutes, then we momentarily show "00:00" before showing "00:59".
+
+            const minutes = Math.round(seconds / 60)
+            const mins = minutes % 60;
+            const minutesClock = mins < 10 ? `0${mins}` : mins;
+
             sign.innerHTML = `
                 <cfa-banner>
-                    <h1 style="font-size: 8em">00:${secondsClock}</h1>
+                    <h1 style="font-size: 8em">${minutesClock}:${secondsClock}</h1>
                     <div slot="right">
-                        <h1 style="font-size: 6em;">⏰</h1>
+                        <h1 class="shake" style="font-size: 6em;">⏰</h1>
                     </div>
                 </cfa-banner>
             `
@@ -122,7 +157,7 @@
 
             sign.innerHTML = `
                 <cfa-banner>
-                    <p style="font-size: 2em">Jumble Sale starts in</p>
+                    <p style="font-size: 2em; text-align: center;">Lets get ready<br />to jumble!</p>
                     <p style="font-size: 4em">${minutesClock}:${secondsClock}</p>
                     <div slot="right">
                         <h1 style="font-size: 6em;">⏰</h1>
